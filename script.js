@@ -22,6 +22,7 @@ const readerTags = document.querySelector('#reader-tags');
 const readerPrev = document.querySelector('#reader-prev');
 const readerNext = document.querySelector('#reader-next');
 const themeToggle = document.querySelector('#theme-toggle');
+const siteTitle = document.title;
 
 function escapeHTML(value) {
   return String(value ?? '').replace(/[&<>"']/g, (character) => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[character]));
@@ -93,6 +94,7 @@ function openArticle(index, {updateHistory = true} = {}) {
     lastTrigger = grid.querySelector(`[data-article="${index}"]`);
   }
   currentIndex = index;
+  document.title = `${article.title} · ${siteTitle}`;
   dialogTitle.textContent = article.title;
   dialogMeta.innerHTML = `<span>${escapeHTML(article.date)}</span><span aria-hidden="true">·</span><span>${escapeHTML(article.time)}</span><span aria-hidden="true">·</span><span>${escapeHTML((article.tags || []).join(' / '))}</span>`;
   readerTags.textContent = (article.tags || []).map((tag) => `#${tag}`).join('  ');
@@ -109,6 +111,7 @@ function openArticle(index, {updateHistory = true} = {}) {
 function closeArticle({restoreHash = true} = {}) {
   if (!dialog.open) return;
   dialog.close();
+  document.title = siteTitle;
   if (restoreHash) history.pushState({}, '', previousHash || '#writing');
   currentIndex = -1;
   if (lastTrigger) requestAnimationFrame(() => lastTrigger.focus());
@@ -162,7 +165,7 @@ dialogBack.addEventListener('click', () => closeArticle());
 document.querySelector('#dialog-close').addEventListener('click', () => closeArticle());
 dialog.addEventListener('click', (event) => { if (event.target === dialog) closeArticle(); });
 dialog.addEventListener('cancel', (event) => { event.preventDefault(); closeArticle(); });
-dialog.addEventListener('close', () => { if (location.hash.startsWith('#post-')) history.replaceState({}, '', previousHash || '#writing'); });
+dialog.addEventListener('close', () => { document.title = siteTitle; if (location.hash.startsWith('#post-')) history.replaceState({}, '', previousHash || '#writing'); });
 tocToggle.addEventListener('click', () => { const expanded = tocToggle.getAttribute('aria-expanded') === 'true'; tocToggle.setAttribute('aria-expanded', String(!expanded)); toc.hidden = expanded; });
 toc.addEventListener('click', (event) => { const link = event.target.closest('[data-toc-id]'); if (!link) return; event.preventDefault(); const target = document.getElementById(link.dataset.tocId); if (target) { target.scrollIntoView({behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start'}); target.focus({preventScroll: true}); } });
 copyLink.addEventListener('click', copyArticleLink);
