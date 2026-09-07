@@ -31,6 +31,7 @@ html[data-theme=dark]{--cs-bg-base:#0e0e0e;--cs-bg-body:#151515;--cs-bg-card:#1b
 .reader-nav-next{align-items:flex-end;text-align:right}
 .reader-nav-label{color:var(--cs-text-describe);font:12px/16px var(--cs-font-mono)}
 .reader-nav-button strong{font-size:13px;line-height:18px;font-weight:600}
+.reader-nav[hidden],.reader-nav-button[hidden]{display:none!important}
 .reader-footer-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:16px}
 .reader-tags{display:flex;flex-wrap:wrap;gap:6px;color:var(--cs-text-describe);font:12px/16px var(--cs-font-mono)}
 .reader-share-status{min-height:16px;color:var(--cs-accent);font-size:12px}
