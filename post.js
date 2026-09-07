@@ -12,6 +12,7 @@ const tocToggle = document.querySelector('#toc-toggle');
 const copyLink = document.querySelector('#copy-link');
 const shareStatus = document.querySelector('#share-status');
 const readerTags = document.querySelector('#reader-tags');
+const readerNav = document.querySelector('.reader-nav');
 const readerPrev = document.querySelector('#reader-prev');
 const readerNext = document.querySelector('#reader-next');
 const themeToggle = document.querySelector('#theme-toggle');
@@ -47,6 +48,7 @@ function renderToc(article) {
 function renderNavigation() {
   const previous = articles[currentIndex - 1];
   const next = articles[currentIndex + 1];
+  readerNav.hidden = !previous && !next;
   const setLink = (link, article, label, index) => {
     link.hidden = !article;
     if (!article) return;
