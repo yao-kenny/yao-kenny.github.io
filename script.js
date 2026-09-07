@@ -88,7 +88,8 @@ function openArticle(index, {updateHistory = true} = {}) {
   const article = articles[index];
   if (!article) return;
   if (!dialog.open) {
-    previousHash = location.hash && !location.hash.startsWith('#post-') ? location.hash : '#writing';
+    const isArticleHash = articles.some((entry, entryIndex) => location.hash === `#${slugFor(entry, entryIndex)}`);
+    previousHash = location.hash && !isArticleHash ? location.hash : '#writing';
     lastTrigger = grid.querySelector(`[data-article="${index}"]`);
   }
   currentIndex = index;
