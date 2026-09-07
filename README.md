@@ -4,7 +4,7 @@
 
 ## 本地预览
 
-直接打开 `index.html` 即可预览。发布后，每次推送到 `main` 分支都会触发 GitHub Pages 部署。
+建议通过本地静态服务器预览（因为浏览器可能限制 `index.html` 直接读取 `content/posts.json`）。发布后，每次推送到 `main` 分支都会触发 GitHub Pages 部署。
 
 ## 自定义内容
 
