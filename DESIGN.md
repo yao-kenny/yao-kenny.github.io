@@ -2,9 +2,9 @@
 
 ## Direction
 
-- Compact System-aligned publishing workspace: content first, scan-friendly, semantic and keyboard usable.
+- Compact System-aligned personal blog: content first, scan-friendly, semantic and keyboard usable.
 - Use the `--cs-*` semantic token layer for surfaces, text, borders, interaction fills and Accent.
-- Keep the 228px sidebar / 44px topbar application geometry, 4px spacing grid and 8px maximum content radius.
+- Keep the centered single-column reading layout, 4px spacing grid and 8px maximum content radius.
 
 ## Tokens
 
