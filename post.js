@@ -2,6 +2,7 @@ let articles = [];
 let currentIndex = -1;
 
 const postState = document.querySelector('#post-state');
+const retryLoad = document.querySelector('#retry-load');
 const postArticle = document.querySelector('#post-article');
 const postMeta = document.querySelector('#post-meta');
 const postTitle = document.querySelector('#post-title');
@@ -27,6 +28,7 @@ function slugFor(article, index) {
 }
 
 function renderBody(article) {
+  if (Array.isArray(article.blocks) && article.blocks.length) return article.blocks.map(renderBlock).join('');
   const headingIds = new Map((article.toc || []).map((item) => [item.title, item.id]));
   return (article.body || []).map((raw) => {
     const value = String(raw ?? '').trim();
@@ -35,8 +37,21 @@ function renderBody(article) {
     if (headingIds.has(value)) return `<h2 id="${escapeHTML(headingIds.get(value))}" tabindex="-1">${escapeHTML(value)}</h2>`;
     const isDiagram = value.includes('↓') || value.includes('│') || value.includes('├──') || value.includes('└──');
     if (isDiagram) return `<pre class="reader-code"><code>${escapeHTML(value)}</code></pre>`;
+    const lines = value.split('\n').map((line) => line.trim()).filter(Boolean);
+    if (lines.length > 1) return `<ul class="reader-list">${lines.map((line) => `<li>${escapeHTML(line)}</li>`).join('')}</ul>`;
     return `<p>${escapeHTML(value).replace(/\n/g, '<br>')}</p>`;
   }).join('');
+}
+
+function renderBlock(block) {
+  const type = block?.type || 'paragraph';
+  const value = String(block?.text ?? '');
+  if (type === 'heading') return `<h2 id="${escapeHTML(block.id || '')}" tabindex="-1">${escapeHTML(value)}</h2>`;
+  if (type === 'list') return `<ul class="reader-list">${(block.items || []).map((item) => `<li>${escapeHTML(item)}</li>`).join('')}</ul>`;
+  if (type === 'quote') return `<blockquote>${escapeHTML(value)}</blockquote>`;
+  if (type === 'code') return `<pre class="reader-code"><code>${escapeHTML(value)}</code></pre>`;
+  if (type === 'rule') return '<hr class="reader-rule">';
+  return `<p>${escapeHTML(value)}</p>`;
 }
 
 function renderToc(article) {
@@ -61,7 +76,7 @@ function renderNavigation() {
 
 function renderArticle(article) {
   document.title = `${article.title} · ${siteTitle}`;
-  postMeta.innerHTML = `<span>${escapeHTML(article.date)}</span><span aria-hidden="true">·</span><span>${escapeHTML(article.time)}</span><span aria-hidden="true">·</span><span>${escapeHTML((article.tags || []).join(' / '))}</span>`;
+  postMeta.innerHTML = `<span>${escapeHTML(article.date)}</span><span aria-hidden="true">·</span><span>${escapeHTML(article.time)}</span><span aria-hidden="true">·</span><span>Kenny Yao</span><span aria-hidden="true">·</span><span>${escapeHTML((article.tags || []).join(' / '))}</span>`;
   postTitle.textContent = article.title;
   postExcerpt.textContent = article.excerpt || '';
   postContent.innerHTML = renderBody(article);
@@ -83,6 +98,9 @@ async function copyArticleLink() {
 }
 
 async function loadContent() {
+  retryLoad.hidden = true;
+  postState.hidden = false;
+  postState.textContent = 'Loading article…';
   try {
     const response = await fetch('content/posts.json', {cache: 'no-store'});
     if (!response.ok) throw new Error(`Content request failed: ${response.status}`);
@@ -90,6 +108,7 @@ async function loadContent() {
     articles = Array.isArray(payload.posts) ? payload.posts : [];
   } catch (error) {
     postState.textContent = '文章暂时无法加载，请稍后重试。';
+    retryLoad.hidden = false;
     return;
   }
   const requestedSlug = new URLSearchParams(location.search).get('slug');
@@ -105,6 +124,7 @@ tocToggle.addEventListener('click', () => { const expanded = tocToggle.getAttrib
 postToc.addEventListener('click', (event) => { const link = event.target.closest('[data-toc-id]'); if (!link) return; event.preventDefault(); const target = document.getElementById(link.dataset.tocId); if (target) { target.scrollIntoView({behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start'}); target.focus({preventScroll: true}); } });
 copyLink.addEventListener('click', copyArticleLink);
 document.addEventListener('keydown', (event) => { if (event.altKey && event.key.toLowerCase() === 'c') { event.preventDefault(); tocToggle.click(); } });
-themeToggle.addEventListener('click', () => { const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'; document.documentElement.dataset.theme = next; themeToggle.setAttribute('aria-label', next === 'dark' ? '切换浅色模式' : '切换深色模式'); });
+themeToggle.addEventListener('click', () => { const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'; document.documentElement.dataset.theme = next; themeToggle.setAttribute('aria-label', next === 'dark' ? '切换浅色模式' : '切换深色模式'); themeToggle.title = next === 'dark' ? '切换浅色模式' : '切换深色模式'; try { localStorage.setItem('kenny-theme', next); } catch (error) {} });
+retryLoad.addEventListener('click', loadContent);
 
 loadContent();
