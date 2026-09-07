@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Kenny Yao 的文章。" />
+    <title>Kenny's Notes</title>
+    <link rel="stylesheet" href="styles.css?v=5" />
+  </head>
+  <body>
+    <div class="site-wrap">
+      <header class="site-header" aria-label="主导航">
+        <a class="brand" href="index.html#top" aria-label="Kenny's Notes"><span class="brand-name">Kenny's Notes</span><span class="brand-mark">KY</span></a>
+        <div class="header-actions"><button class="icon-button" id="theme-toggle" aria-label="切换深色模式" title="切换深色模式">◐</button><span class="divider" aria-hidden="true">|</span><nav class="top-nav"><a class="top-nav-link is-current" href="index.html#writing">Posts</a><a class="top-nav-link" href="index.html#writing">Archive</a><a class="top-nav-link" href="index.html#search-input">Search</a><a class="top-nav-link" href="index.html#tag-filters">Tags</a></nav></div>
+      </header>
+
+      <main class="post-page" id="top">
+        <a class="post-back" href="index.html#writing">← 返回文章列表</a>
+        <p class="post-state" id="post-state">Loading article…</p>
+        <article class="post-article" id="post-article" hidden aria-labelledby="post-title">
+          <header class="post-header">
+            <div class="article-meta" id="post-meta"></div>
+            <h1 id="post-title"></h1>
+            <p class="post-excerpt" id="post-excerpt"></p>
+            <div class="post-tools"><button class="reader-action" id="toc-toggle" type="button" aria-expanded="false" aria-controls="post-toc">目录</button><button class="reader-action" id="copy-link" type="button">复制链接</button><span class="reader-share-status" id="share-status" role="status" aria-live="polite"></span></div>
+          </header>
+          <div class="post-shell"><aside class="reader-toc" id="post-toc" aria-label="文章目录" hidden></aside><div class="post-body"><div class="reader-content" id="post-content"></div><footer class="reader-footer"><div class="reader-nav"><a class="reader-nav-button" id="reader-prev" href="#" hidden></a><a class="reader-nav-button reader-nav-next" id="reader-next" href="#" hidden></a></div><div class="reader-footer-meta"><div class="reader-tags" id="reader-tags"></div></div></footer></div></div>
+        </article>
+      </main>
+
+      <footer class="site-footer"><span>© 2026 Kenny Yao</span><span>Powered by GitHub Pages</span></footer>
+    </div>
+    <script src="post.js?v=1"></script>
+  </body>
+</html>
