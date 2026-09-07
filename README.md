@@ -8,7 +8,8 @@
 
 ## 自定义内容
 
+- 文章列表、正文和 Tag：编辑 `content/posts.json`
+- 字段说明与示例：查看 `CONTENT_GUIDE.md`
 - 首页身份与简介：编辑 `index.html`
-- 文章列表与正文：编辑 `script.js` 中的 `articles`
 - 视觉令牌与响应式样式：编辑 `styles.css`
 - GitHub Pages 发布：`.github/workflows/deploy.yml`
