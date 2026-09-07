@@ -15,6 +15,7 @@ const dialog = document.querySelector('#article-dialog');
 const dialogTitle = document.querySelector('#dialog-title');
 const dialogMeta = document.querySelector('#dialog-meta');
 const dialogContent = document.querySelector('#dialog-content');
+const themeToggle = document.querySelector('#theme-toggle');
 
 const tags = ['All', ...new Set(articles.flatMap((article) => article.tags))];
 let activeTag = 'All';
@@ -51,4 +52,5 @@ document.querySelectorAll('[data-article]').forEach((button) => button.addEventL
 document.querySelector('#dialog-close').addEventListener('click', () => dialog.close());
 dialog.addEventListener('click', (event) => { if (event.target === dialog) dialog.close(); });
 document.addEventListener('keydown', (event) => { if (event.key === '/' && document.activeElement !== searchInput && !dialog.open) { event.preventDefault(); searchInput.focus(); } });
+themeToggle.addEventListener('click', () => { const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'; document.documentElement.dataset.theme = next; themeToggle.setAttribute('aria-label', next === 'dark' ? '切换浅色模式' : '切换深色模式'); });
 renderFilters(); renderArticles();
