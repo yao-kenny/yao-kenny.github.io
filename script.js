@@ -168,7 +168,7 @@ copyLink.addEventListener('click', copyArticleLink);
 [readerPrev, readerNext].forEach((button) => button.addEventListener('click', () => { if (button.dataset.index) openArticle(Number(button.dataset.index)); }));
 window.addEventListener('hashchange', syncArticleHash);
 window.addEventListener('popstate', syncArticleHash);
-document.addEventListener('keydown', (event) => { if (event.key === '/' && document.activeElement !== searchInput && !dialog.open) { event.preventDefault(); searchInput.focus(); } });
+document.addEventListener('keydown', (event) => { if (event.altKey && event.key.toLowerCase() === 'c' && dialog.open) { event.preventDefault(); tocToggle.click(); return; } if (event.key === '/' && document.activeElement !== searchInput && !dialog.open) { event.preventDefault(); searchInput.focus(); } });
 themeToggle.addEventListener('click', () => { const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'; document.documentElement.dataset.theme = next; themeToggle.setAttribute('aria-label', next === 'dark' ? '切换浅色模式' : '切换深色模式'); });
 
 loadContent();
