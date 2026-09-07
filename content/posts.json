@@ -8,6 +8,7 @@
   "posts": [
     {
       "title": "为什么企业 AI 需要两张图：一张公司地图，一张实时经营图",
+      "slug": "enterprise-ai-world-model",
       "date": "2026.09.07",
       "time": "12 min read",
       "tags": [
@@ -17,6 +18,21 @@
         "AI产品"
       ],
       "excerpt": "Stateless Ontology 是公司的地图，Stateful Ontology 是公司的实时经营图。两者结合，AI 才能从理解企业结构走向持续参与企业运行。",
+      "toc": [
+        {"id": "company-structure", "title": "AI 首先要知道，这家公司到底是怎么组成的"},
+        {"id": "company-operation", "title": "但认识公司，还远远不等于会经营公司"},
+        {"id": "stateful-ontology", "title": "Stateful Ontology，真正管理的是“公司此刻处于什么状态”"},
+        {"id": "event-reinterpretation", "title": "新事件真正触发的是“重新理解公司”"},
+        {"id": "fact-and-state", "title": "Fact 和 State 也不是一回事"},
+        {"id": "judgment", "title": "CEO 真正买单的，其实不是 State，而是 Judgment"},
+        {"id": "action-loop", "title": "最后一步，是 AI 真正开始改变公司"},
+        {"id": "stateless-foundation", "title": "为什么这件事情离不开 Stateless Ontology"},
+        {"id": "risk-propagation", "title": "更关键的是，企业经营风险会沿着这张地图向上传导"},
+        {"id": "real-time-map", "title": "最终，老板 AI 看到的是一张“实时经营地图”"},
+        {"id": "why-it-matters", "title": "这件事情为什么对企业 AI 很重要"},
+        {"id": "two-definitions", "title": "最后，可以把两者压缩成两个非常简单的定义"},
+        {"id": "world-model", "title": "两者合起来，才是真正的企业 World Model"}
+      ],
       "body": [
         "如果你是一家公司的 CEO，每天真正关心的，并不是“公司有多少客户、多少项目、多少合同”。",
         "这些当然重要，但它们只是告诉你：",
