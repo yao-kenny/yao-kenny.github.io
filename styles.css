@@ -71,17 +71,11 @@ button, input { font: inherit; }
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
   color: var(--cs-text-title);
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 600;
   text-decoration: none;
-}
-.brand-name { font-size: 18px; line-height: 24px; font-weight: 600; }
-.brand-mark {
-  padding: 2px 4px;
-  border: 1px solid var(--cs-border);
-  border-radius: var(--cs-radius-1);
-  color: var(--cs-text-describe);
-  font: 10px/14px var(--cs-font-mono);
 }
 .header-actions, .top-nav { display: flex; align-items: center; }
 .header-actions { gap: 12px; }
@@ -94,7 +88,7 @@ button, input { font: inherit; }
   text-decoration: none;
 }
 .top-nav-link:hover { color: var(--cs-accent); }
-.top-nav-link:focus-visible, .post-back:focus-visible, .social-links a:focus-visible {
+.top-nav-link:focus-visible, .post-back:focus-visible {
   outline: 2px solid var(--cs-accent);
   outline-offset: 3px;
   border-radius: var(--cs-radius-1);
@@ -130,10 +124,6 @@ button, input { font: inherit; }
   line-height: 40px;
   font-weight: 600;
 }
-.welcome p { max-width: 620px; margin: 0; color: var(--cs-text-body); }
-.social-links { display: flex; gap: 16px; margin-top: 20px; }
-.social-links a { color: var(--cs-icon-default); font-size: 13px; text-decoration: none; }
-.social-links a:hover { color: var(--cs-accent); }
 
 .posts-section { padding-bottom: 48px; }
 .posts-heading {

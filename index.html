@@ -6,17 +6,17 @@
     <meta name="description" content="Kenny Yao 的个人学习笔记与文章。" />
     <script>try{document.documentElement.dataset.theme=localStorage.getItem('kenny-theme')||'light'}catch(error){}</script>
     <title>Kenny's Notes</title>
-    <link rel="stylesheet" href="styles.css?v=6" />
+    <link rel="stylesheet" href="styles.css?v=8" />
   </head>
   <body>
     <div class="site-wrap">
       <header class="site-header" aria-label="主导航">
-        <a class="brand" href="#top" aria-label="Kenny's Notes"><span class="brand-name">Kenny's Notes</span><span class="brand-mark">KY</span></a>
-        <div class="header-actions"><button class="icon-button" id="theme-toggle" aria-label="切换深色模式" title="切换深色模式"><span aria-hidden="true">Theme</span></button><span class="divider" aria-hidden="true">|</span><nav class="top-nav"><a class="top-nav-link is-current" href="#writing">Posts</a><a class="top-nav-link" href="archive.html">Archive</a><a class="top-nav-link" href="#search-input">Search</a><a class="top-nav-link" href="#tag-filters">Tags</a></nav></div>
+        <a class="brand" href="#top">Kenny's Notes</a>
+        <div class="header-actions"><button class="icon-button" id="theme-toggle" aria-label="切换深色模式" title="切换深色模式"><span aria-hidden="true">Theme</span></button><span class="divider" aria-hidden="true">|</span><nav class="top-nav" aria-label="页面导航"><a class="top-nav-link is-current" href="#writing">Posts</a></nav></div>
       </header>
 
       <main id="top">
-        <section class="welcome" aria-labelledby="welcome-title"><h1 id="welcome-title">👋 Welcome to Kenny's Notes</h1><p>Hi, this is Kenny. I’m documenting my learning notes on AI products, systems, and the craft of thinking clearly.</p><div class="social-links" aria-label="社交链接"><a href="https://github.com/yao-kenny" target="_blank" rel="noreferrer">GitHub</a></div></section>
+        <section class="welcome" aria-labelledby="welcome-title"><h1 id="welcome-title">👋 Welcome to Kenny's Notes</h1></section>
 
         <section class="posts-section" id="writing" aria-labelledby="posts-title"><div class="posts-heading"><h2 id="posts-title">Recent posts</h2><label class="search-box"><input id="search-input" type="search" aria-label="搜索文章" placeholder="Search posts" autocomplete="off" /><kbd>/</kbd></label></div><div class="filter-row" id="tag-filters" aria-label="按主题筛选"></div><div class="article-grid" id="article-grid"></div><p class="empty-state" id="empty-state" role="status" aria-live="polite" hidden>No posts match your search.</p><button class="retry-button" id="retry-load" type="button" hidden>重试</button></section>
       </main>
