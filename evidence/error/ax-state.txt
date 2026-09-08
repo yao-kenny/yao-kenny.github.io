@@ -1,0 +1,5 @@
+Captured 2026-09-07 from `post.html?slug=missing`.
+
+- Loading text appears before data resolves.
+- Final state reads `没有找到这篇文章。` and preserves the return link.
+- Error text is a plain text node rather than an explicit status/live region or retry action.

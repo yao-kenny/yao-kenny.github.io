@@ -1,0 +1,7 @@
+Captured 2026-09-07 from fresh home load.
+
+- Header: brand, theme toggle, Posts, Archive, Search, Tags.
+- Search field is keyboard-focusable and `/` focuses it.
+- Tag buttons expose selected state visually; selecting 企业AI retains one matching article.
+- Fresh article entry is a link to `post.html?slug=enterprise-ai-world-model`.
+- Existing cached tab at `/#tag-filters` exposed the former `article-dialog` modal instead; see WALKTHROUGH_REPORT.md finding F-01.

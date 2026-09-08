@@ -1,0 +1,1 @@
+No mobile runtime screenshot was available through the active browser automation surface. Review is limited to the `max-width:640px` CSS branch and project contract requirement to collapse editorial composition below 800px.

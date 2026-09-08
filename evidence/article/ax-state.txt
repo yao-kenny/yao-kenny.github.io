@@ -1,0 +1,9 @@
+Captured 2026-09-07 from `post.html?slug=enterprise-ai-world-model`.
+
+- Document title becomes `为什么企业 AI 需要两张图：一张公司地图，一张实时经营图 · Kenny's Notes`.
+- Dedicated article page exposes title, metadata, excerpt, TOC toggle and copy action.
+- TOC expands to 13 anchor links and `Alt+C` toggles it.
+- Copy action exposes live status text `链接已复制`.
+- Article headings have stable IDs and receive focus after TOC navigation.
+- One-post state has no visible previous/next cards; tags remain at the footer.
+- Light/dark theme works within a page, but resets after navigating to the article page.
